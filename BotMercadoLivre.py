@@ -9,7 +9,7 @@ from datetime import date
 
 import time
 import re
-#import pandas as pd
+import pandas as pd
 import time
 import requests
 import json
@@ -108,10 +108,7 @@ def colect_data(link):
     listaDados.append(dictDados.copy())
 
     if dictDados["nome"] == "" and dictDados["vendedor"] == "":
-        dictDados["link"] = link
         dictDados["erro"] = True
-
-    driver.quit()
-    
+            
     return dictDados
 

@@ -10,7 +10,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 from datetime import date
 import re
-#import pandas as pd
+import pandas as pd
 from unidecode import unidecode
     
 def colect_data(link):
@@ -62,7 +62,7 @@ def colect_data(link):
 
         driver.get(link)
         
-    if 1 == 1:       
+        
         #Vê se é o captcha
         try:
             captcha = driver.find_element_by_class_name('page-title').text
@@ -175,11 +175,7 @@ def colect_data(link):
             listaDados.append(dictDados.copy())
 
     if dictDados["nome"] == "" and dictDados["vendedor"] == "":
-        dectDados["link"] = link
         dictDados["erro"] = True
-
-    driver.quit()
-
             
     return dictDados
 

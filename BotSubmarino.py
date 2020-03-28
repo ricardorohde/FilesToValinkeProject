@@ -8,7 +8,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from unidecode import unidecode
 from datetime import date
-#import pandas as pd
+import pandas as pd
 import re
 import time
 
@@ -31,8 +31,8 @@ def colect_data(link):
 
     driver = webdriver.Chrome(desired_capabilities=caps, options=options)
 
-    #dfLinks = pd.DataFrame([link])
-    #dfLinks
+    dfLinks = pd.DataFrame([link])
+    dfLinks
 
     listaDados = []
     dictDados = {"preco":"",
@@ -55,8 +55,8 @@ def colect_data(link):
 
 
 
-    #for index, row in dfLinks.iterrows():
-    if 1 == 1:
+    for index, row in dfLinks.iterrows():
+
         driver.get(link)
         
         #Vê se é o captcha
@@ -162,10 +162,8 @@ def colect_data(link):
             listaDados.append(dictDados.copy())
 
     if dictDados["nome"] == "" and dictDados["vendedor"] == "":
-        dectDados["link"] = link
         dictDados["erro"] = True
 
-    driver.quit()
 
     return dictDados
 

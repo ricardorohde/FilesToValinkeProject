@@ -7,7 +7,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 from datetime import date
 import re
-#import pandas as pd
+import pandas as pd
 from unidecode import unidecode
 import json
 
@@ -80,10 +80,7 @@ def colect_data(link):
                     })
 
     if dictDados["nome"] == "" and dictDados["vendedor"] == "":
-        dectDados["link"] = link
         dictDados["erro"] = True
-
-    driver.quit()
 
     return dictDados
 
