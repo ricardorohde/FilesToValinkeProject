@@ -176,8 +176,21 @@ def colect_data(link):
         driver.quit()
 
     except:
-        driver.quit()
-        dictDados = { "preco":"",
+        try:
+            driver.quit()
+            dictDados = { "preco":"",
+                      "link":"",
+                      "nome":"",
+                      "vendedor":"",
+                      "linkimagem":"",
+                      "loja":"",
+                      "vendidos":"",
+                      "estoqueAtual":"",
+                      "estoqueInicial":"",
+                      "erro":True
+                      }
+        except:
+            dictDados = { "preco":"",
                       "link":"",
                       "nome":"",
                       "vendedor":"",
