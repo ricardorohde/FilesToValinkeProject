@@ -195,4 +195,3 @@ def colect_data(link):
                       }
 
     return dictDados
-

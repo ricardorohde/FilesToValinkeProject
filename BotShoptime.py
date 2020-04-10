@@ -10,7 +10,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 from datetime import date
 import re
-#import pandas as pd
+import pandas as pd
 from unidecode import unidecode
     
 def colect_data(link):
@@ -57,12 +57,24 @@ def colect_data(link):
             market_place = "Shoptime"
         else:
             market_place = ""
+
+        driver.get(link)
+        
+        
+        #Vê se é o captcha
+        try:
+            captcha = driver.find_element_by_class_name('page-title').text
+            if captcha == "Please verify you are a human":
+                print("CAPTCHA DE VERIFICAÇÃO")
+                input('Resolva o captcha e tecle enter:')
+        except:
+            pass
         
         for index, row in dfLinks.iterrows():
 
             driver.get(link)
             
-        if 1 == 1:       
+        
             #Vê se é o captcha
             try:
                 captcha = driver.find_element_by_class_name('page-title').text
@@ -100,10 +112,7 @@ def colect_data(link):
                 print("Sem estoque")
                 estoque = ""
                 pass
-            
-         
-
-                
+               
             
             print(estoque)
             print("O layout dessa página é: ", layout)
@@ -206,6 +215,9 @@ def colect_data(link):
                       "estoqueInicial":"",
                       "erro":True
                       }
+
+    if dictDados["nome"] == "" and dictDados["vendedor"] == "":
+        dictDados["erro"] = True
             
     return dictDados
 

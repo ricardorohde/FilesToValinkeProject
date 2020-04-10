@@ -9,12 +9,11 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from datetime import date
 from unidecode import unidecode
 
-#import pandas as pd
+import pandas as pd
 import time
 import re
 
 def colect_data(link):
-
     try:
         #esperar o carregamento completo
         caps = DesiredCapabilities().CHROME
@@ -31,12 +30,13 @@ def colect_data(link):
         options.add_argument('--disable-dev-shm-usage')
         options.add_argument('window-size=1920x1480')
 
+
         driver = webdriver.Chrome(desired_capabilities=caps, options=options)
 
 
 
-        #dfLinks = pd.DataFrame([link])
-        #dfLinks
+        dfLinks = pd.DataFrame([link])
+        dfLinks
 
         listaDados = []
         dictDados = { "preco":"",
@@ -56,8 +56,8 @@ def colect_data(link):
         else:
             market_place = ""
 
-        if 1 == 1:
-            #for index, row in dfLinks.iterrows():
+
+        for index, row in dfLinks.iterrows():
             driver.get(link)
             
             #Vê se é o captcha
@@ -201,4 +201,10 @@ def colect_data(link):
                       "estoqueInicial":"",
                       "erro":True
                       }
+
+        listaDados.append(dictDados.copy())
+
+    if dictDados["nome"] == "" and dictDados["vendedor"] == "":
+        dictDados["erro"] = True
+
     return dictDados

@@ -119,12 +119,3 @@ def colect_data(link):
         
 
 
-
-
-
-
-
-
-
-
-    

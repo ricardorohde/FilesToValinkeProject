@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#btnValidaLink').click(function() {
+      alert("btnValidaLink");
+      $.ajax({        
+          url: "./link.php",
+          type: "GET",
+          data: {
+              "link" : "https://www.casasbahia.com.br/TelefoneseCelulares/Smartphones/Android/smartphone-motorola-moto-g8-play-preto-onix-32gb-tela-max-vision-de-6-2-hd-camera-traseira-tripla-android-9-0-e-processador-octa-core-50004766.html?utm_medium=Cpc&utm_source=GP_PLA&IdSku=50004766&idLojista=10037&utm_campaign=tele_smart-shopping&gclid=CjwKCAjwssD0BRBIEiwA-JP5rM8OngMSssU0K0LmjFWz2E96PWu_sISJGSWqk8Z8SJX7XQIQES5epRoCwQ8QAvD_BwE"
+          },
+          beforeSend: function(request, r) {
+            alert(r.url);
+            request.setRequestHeader('Content-Type', 'application/json');
+            request.setRequestHeader('Access-Control-Allow-Methods', ' GET, POST, OPTIONS');
+          },  
+          success: function(data) {
+              alert("Sucesso");
+              alert(data);
+          },
+          error: function(data) {
+              alert("error");
+              alert(data.status);
+          }
+      });
+    });
+  });
+</script>
+
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>HTTP Client AJAX</h1>
+</div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Validar Link</h3>
+        <button type="submit"  id="btnValidaLink" class="btn btn-primary">Executar</button>
+      <p>Retultado</p>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>

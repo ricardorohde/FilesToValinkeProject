@@ -9,7 +9,7 @@ from datetime import date
 
 import time
 import re
-#import pandas as pd
+import pandas as pd
 import time
 import requests
 import json
@@ -141,5 +141,8 @@ def colect_data(link):
                       "erro":True
                       }
     
+    if dictDados["nome"] == "" and dictDados["vendedor"] == "":
+        dictDados["erro"] = True
+
     return dictDados
 
